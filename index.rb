@@ -1,3 +1,5 @@
+#https://www.safaribooksonline.com/library/view/seven-web-frameworks/9781941222676/f_0016.html
+
 require "sinatra"
 require "data_mapper"
 require "dm-core"
@@ -11,20 +13,42 @@ DataMapper.setup(:default,"sqlite3://#{Dir.pwd}/bookmakrs.db")
 DataMapper.auto_migrate!
 DataMapper.auto_upgrade!
 
+## Seeds
+
+mark1 = Bookmark.new url:"google.com",title:"search"
+mark1.save
+
+mark2 = Bookmark.new url:"github.com/sherri010",title:"mygitub"
+mark2.save
+
+mark3 = Bookmark.new url:"niche-mapper.com",title:"work"
+mark3.save
+
 class Hash
    def slice(*whitelist)
     whitelist.inject({}) {|result,key| result.merge(key => self[key])}
    end
 end
 
+helpers do
+   def h(text)
+     Rack::Utils.escape_html(text)
+   end
+ end
+
 def get_all_bookmarks
    Bookmark.all(:order => :title)
 end
 
+# #root
+get "/" do
+   erb :index
+end
 # #Index
 get "/bookmarks" do
-   content_type :json
-   get_all_bookmarks.to_json
+   # content_type :json
+   @all_bookmarks = get_all_bookmarks
+   erb :list
 end
 # #show
 get "/bookmarks/:id" do
