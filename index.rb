@@ -62,7 +62,7 @@ end
 post "/bookmarks" do
   input = params.slice "url","title"
   bookmark = Bookmark.create input
-  200
+  redirect "/bookmarks"
 end
 
 # #update
@@ -79,5 +79,5 @@ delete "/bookmarks/:id" do
   id = params[:id]
   bookmark = Bookmark.get(id)
   bookmark.destroy
-   200
+  200
 end
