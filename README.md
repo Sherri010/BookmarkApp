@@ -67,6 +67,13 @@ DataMapper.auto_upgrade!
 
 
 ```
+#server.rb
+
+
+def get_all_bookmarks
+   Bookmark.all()
+end
+
 
 ##root
 get "/" do
@@ -87,6 +94,51 @@ get "/bookmarks/:id" do
    bookmark.to_json #**
 end
 
+```
+
+####Views
+view for index rout:
+
+```
+<div id="wrapper">
+<ul>
+  <% @all_bookmarks.each do |mark| %>
+   <li>
+     <div>
+         <h3> <%= mark.title %> </h3>
+         <a href="<%= mark.url %>" target="blank"> visit page</a>
+         <button id="<%= mark.id%>" class="remove">X</button>
+      </div>
+    </li>
+  <% end %>
+</ul>
+</div>
+```
+
+#### Other routes:
+
+```
+# #create
+post "/bookmarks" do
+  input = params.slice "url","title"
+  bookmark = Bookmark.create input
+  redirect "/bookmarks"
+end
+
+# #update
+put "/bookmarks/:id" do
+  id= params[:id]
+  bookmark = Bookmark.get(id)
+  input = params.slice "url","title"
+  bookmark.update input
+end
+
+# #destroy
+delete "/bookmarks/:id" do
+  id = params[:id]
+  bookmark = Bookmark.get(id)
+  bookmark.destroy
+end
 ```
 
 
