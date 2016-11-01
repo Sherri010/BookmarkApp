@@ -15,6 +15,80 @@ end
 Sinatra is great for creating RESTful applications and APIs and provides lots of options for developer to choose from. You can use mix Sinatra with AngularJS or other front-end frameworks or use it alone to create front end. You can use PostgreSQL or SQLite with either ActiveRecord or Data Mapper for ORM. DataMApper is used in this example.
 
 
+###Sinatra vs Rails
+- Rails makes assumptions and takes care of alot for developers, Sinatra provides minimum amount of tools and lets the developer architect everything.
+- Rails is a framework focused on writing model driven web applications, Sinatra is a library for dealing with HTTP from the server side. 
+- Rails is good for large applications, Sinatra works great for small apps and APIs.
+- Rails has a larger community 
+
+
+##Bookmark example:
+
+#### Requirements:
+```
+#server.rb
+
+require "sinatra"
+require "data_mapper"
+require "dm-core"
+require "dm-timestamps"
+require "dm-validations"
+require "dm-validations"
+require_relative "bookmark"
+require"dm-serializer"
+
+```
+
+#### Model and DB:
+- model:
+```
+#bookmark.rb
+
+require "data_mapper"
+
+class Bookmark
+  include DataMapper::Resource
+   property :id,Serial
+   property :url,String
+   property :title,String
+end
+```
+
+```
+#server.rb
+
+DataMapper.setup(:default,"sqlite3://#{Dir.pwd}/bookmakrs.db")
+DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
+
+```
+
+=> bookmark.db
+
+
+```
+
+##root
+get "/" do
+   erb :index  #**
+end
+
+##Index
+get "/bookmarks" do
+   @all_bookmarks = get_all_bookmarks
+   erb :list #**
+end
+
+##show
+get "/bookmarks/:id" do
+   id=params[:id]
+   bookmark = Bookmark.get(id)
+   content_type :json
+   bookmark.to_json #**
+end
+
+```
+
 
 
 
