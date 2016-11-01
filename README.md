@@ -141,7 +141,7 @@ delete "/bookmarks/:id" do
   bookmark.destroy
 end
 ```
-
+**conditions**
 
 Sources:
 - Sinatra docs   : http://www.sinatrarb.com/
