@@ -15,13 +15,13 @@ DataMapper.auto_upgrade!
 
 ## Seeds
 
-mark1 = Bookmark.new url:"google.com",title:"search"
+mark1 = Bookmark.new url:"http://google.com",title:"search"
 mark1.save
 
-mark2 = Bookmark.new url:"github.com/sherri010",title:"mygitub"
+mark2 = Bookmark.new url:"https://github.com/sherri010",title:"mygitub"
 mark2.save
 
-mark3 = Bookmark.new url:"niche-mapper.com",title:"work"
+mark3 = Bookmark.new url:"http://niche-mapper.com",title:"work"
 mark3.save
 
 class Hash
@@ -59,10 +59,10 @@ get "/bookmarks/:id" do
 end
 
 # #create
-post "/bookmakrs" do
+post "/bookmarks" do
   input = params.slice "url","title"
   bookmark = Bookmark.create input
-  [201,"/bookmarks/#{bookmark['id']}"]
+  200
 end
 
 # #update
@@ -79,5 +79,5 @@ delete "/bookmarks/:id" do
   id = params[:id]
   bookmark = Bookmark.get(id)
   bookmark.destroy
-  200
+   200
 end
