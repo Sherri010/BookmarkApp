@@ -16,6 +16,7 @@ Sinatra is great for creating RESTful applications and APIs and provides lots of
 
 
 ###Sinatra vs Rails
+- Sinatra is tiny.It's around 1500 lines of code. Rails is closer to 100,000 lines of code. That's almost 1/100th the size of Rails.
 - Rails makes assumptions and takes care of alot for developers, Sinatra provides minimum amount of tools and lets the developer architect everything.
 - Rails is a framework focused on writing model driven web applications, Sinatra is a library for dealing with HTTP from the server side. 
 - Rails is good for large applications, Sinatra works great for small apps and APIs.
