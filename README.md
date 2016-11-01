@@ -1,4 +1,7 @@
 # BookmarkApp
 Using Sinatra
-![](http://www.sinatrarb.com/images/sinatra-pre-svg.gif)
-![GitHub Logo](/images/logo.png)
+![](http://ddi-dev.com/uploads/media/news/0001/01/thumb_505_news_main.jpeg)
+
+## Sinatra Framework
+
+
