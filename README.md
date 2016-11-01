@@ -63,7 +63,7 @@ DataMapper.auto_upgrade!
 
 ```
 
-=> bookmark.db
+Creates bookmark.db
 
 
 ```
