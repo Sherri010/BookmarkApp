@@ -37,7 +37,7 @@ helpers do
  end
 
 def get_all_bookmarks
-   Bookmark.all(:order => :title)
+   Bookmark.all()
 end
 
 # #root
@@ -71,7 +71,7 @@ put "/bookmarks/:id" do
   bookmark = Bookmark.get(id)
   input = params.slice "url","title"
   bookmark.update input
-  204
+
 end
 
 # #destroy
@@ -79,5 +79,5 @@ delete "/bookmarks/:id" do
   id = params[:id]
   bookmark = Bookmark.get(id)
   bookmark.destroy
-  200
+
 end
