@@ -12,7 +12,7 @@ get "/hello" do
 end
 ```
 
-Sinatra is great for creating RESTful applications and APIs and provides lots of options for developer to choose from. You can use mix Sinatra with AngularJS or other front-end frameworks or use it alone to create front end. You can use PostgreSQL or SQLite with either ActiveRecord or Data Mapper for ORM. DataMApper is used in this example.
+Sinatra is great for creating RESTful applications and APIs and provides lots of options for developer to choose from. You can use mix Sinatra with AngularJS or other front-end frameworks or use it alone to create front end. You can use PostgreSQL or SQLite with ActiveRecord, DataMapper or etc for ORM. DataMApper is used in this example which is an Object Relational Mapper in Ruby.
 
 
 ###Sinatra vs Rails
@@ -142,9 +142,12 @@ end
 ```
 
 
+Sources:
+- Sinatra docs   : http://www.sinatrarb.com/
+- Source code    : https://github.com/sinatra/sinatra
+- DataMapper doc : http://datamapper.org/
+- Example ref    : Seven Web Frameworks in Seven Weeks by Jack Moffitt, Fred Daoud 
 
-
-
-
+![](https://camo.githubusercontent.com/98a445316eacd837aedabadf1050fcc5246434c5/687474703a2f2f7777772e617070656c7369696e692e6e65742f6173736574732f73696e617472612d6c6f676f2e676966)
 
 
